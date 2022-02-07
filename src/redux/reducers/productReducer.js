@@ -1,4 +1,4 @@
-import { type } from '@testing-library/user-event/dist/type';
+
 import { ActionTypes } from './../constants/action-types';
 
 const initialState = {
