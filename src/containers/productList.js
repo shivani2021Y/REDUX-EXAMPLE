@@ -25,7 +25,7 @@ const ProductList = ()=>{
         }  
         fetchProducts();
         
-    },[]);
+    },[dispatch]);
    
    console.log(products);
     return (
