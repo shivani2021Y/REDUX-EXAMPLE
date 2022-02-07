@@ -30,7 +30,7 @@ const ProductComponent = () => {
 
     })
 
-    console.log(myProducts)
+   // console.log(myProducts)
     return<>
     {products.length ===0 ? (<p>loading</p>) : myProducts}
 

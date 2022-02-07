@@ -10,23 +10,25 @@ const ProductDetail = ()=>{
     const product = useSelector((state)=>state.product);
     const {id, title, price,category,image} = product;
     console.log("inside ProductDetail, id is" ,productId, id, title, price,category,image);
-    const fetchProductDetail = async ()=>{
-        const {data} = await axios
-                       .get(`https://fakestoreapi.com/products/${productId}`)
-                       .catch((err)=>{
-                        console.log('Error is',err);
-                       });
-        console.log(data);
-        dispatch(selectedProduct(data));
-    }
+    
 
     useEffect(()=>{
+        const fetchProductDetail = async ()=>{
+            const {data} = await axios
+                           .get(`https://fakestoreapi.com/products/${productId}`)
+                           .catch((err)=>{
+                            console.log('Error is',err);
+                           });
+            console.log(data);
+            dispatch(selectedProduct(data));
+        }
         if(productId!=="" && productId)fetchProductDetail();
+
 
         return ()=>{
             dispatch(removeSelectedProduct())
         }
-    },[productId])
+    },[productId, dispatch])
     return <div>
         {Object.keys(product).length===0 ? (<p>Loading....</p>) : (<div className='four column wide' key={id}>
             <div className='ui link cards'>

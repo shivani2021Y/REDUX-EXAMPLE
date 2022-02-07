@@ -10,22 +10,23 @@ const ProductList = ()=>{
     const dispatch = useDispatch();
 
     useEffect(()=>{
+        const fetchProducts = async()=>{
+            const {data} = await axios
+              .get('https://fakestoreapi.com/products')
+              .catch((err)=>{
+                 console.log("Error", err);
+              }); 
+    
+              console.log(data);
+              dispatch(setProducts(data));
+            // const dispatch = useDispatch();
+            // dispatch(setProducts(data));
+            //return data
+        }  
         fetchProducts();
         
     },[]);
-    const fetchProducts = async()=>{
-        const {data} = await axios
-          .get('https://fakestoreapi.com/products')
-          .catch((err)=>{
-             console.log("Error", err);
-          }); 
-
-          console.log(data);
-          dispatch(setProducts(data));
-        // const dispatch = useDispatch();
-        // dispatch(setProducts(data));
-        //return data
-    }
+   
    console.log(products);
     return (
         <div className='ui grid container'>
